@@ -2,8 +2,8 @@ name: Fail On PR Review
 
 on:
   push:
-    branches:
-      - !main
+    branches-ignore:
+      - 'main'
 
 jobs:
   list-changed-files:

@@ -1,0 +1,19 @@
+name: Fail On PR Review
+
+on:
+  push:
+    branches:
+      - !main
+
+jobs:
+  list-changed-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Get list of changed files
+      run: |
+        git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
+      shell: bash
